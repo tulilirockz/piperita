@@ -2,8 +2,6 @@
 
 set -xeuo pipefail
 
-cp -avf "/ctx/system_files"/. /
-
 rm -r -f /usr/lib/modules
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr disable bieszczaders/kernel-cachyos-lto

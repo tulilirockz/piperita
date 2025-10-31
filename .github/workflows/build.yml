@@ -16,7 +16,7 @@ on:
 env:
   IMAGE_DESC: "Bootc image with hyperoptimization stuff cuz its fun"
   IMAGE_KEYWORDS: "bootc,fedora,zirconium"
-  IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/120078124?s=200&v=4"
+  IMAGE_LOGO_URL: "https://github.com/tulilirockz/piperita/blob/main/assets/piperita.png"
   IMAGE_NAME: "${{ github.event.repository.name }}"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
   DEFAULT_TAG: "latest"
