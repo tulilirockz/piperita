@@ -8,4 +8,6 @@
 </div>
 <br/>
 
-[Zirconium](https://github.com/zirconium-dev/zirconium) with the [CachyOS kernel](https://github.com/CachyOS/linux-cachyos) and [SCX schedulers](https://github.com/sched-ext/scx) (gaming stuffg)
+[Zirconium](https://github.com/zirconium-dev/zirconium) with the [CachyOS kernel](https://github.com/CachyOS/linux-cachyos) and [SCX schedulers](https://github.com/sched-ext/scx) (gaming stuff)
+
+Highly inspired by [XeniaOS](https://github.com/xeniameraki/xeniaos) by my friend [XeniaMeriaki](https://github.com/xeniameraki/)!
