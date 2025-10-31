@@ -2,6 +2,10 @@
 
 set -xeuo pipefail
 
+# Updating makes it so some hook or something runs and the kernel package install actually works
+# And I cannot bother figuring out why
+dnf update -y
+
 rm -r -f /usr/lib/modules
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr disable bieszczaders/kernel-cachyos-lto
