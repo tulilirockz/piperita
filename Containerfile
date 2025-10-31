@@ -2,7 +2,7 @@ FROM scratch AS ctx
 
 COPY build.sh /build.sh
 
-FROM ghcr.io/zirconium-dev/zirconium:latest
+FROM ghcr.io/zirconium-dev/zirconium:latest@sha256:e441bf64a18d593a2518a18f500fc764c98f395a0a41baf0a41686b6f619fc6a
 
 RUN --mount=type=tmpfs,dst=/var \
     --mount=type=tmpfs,dst=/tmp \
