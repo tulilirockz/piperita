@@ -4,11 +4,11 @@ COPY build.sh /build.sh
 
 FROM ghcr.io/zirconium-dev/zirconium:latest
 
-RUN --mount=type=tmpfs,dst=/var \
-    --mount=type=tmpfs,dst=/tmp \
+RUN --mount=type=bind,from=ctx,source=/,dst=/tmp/build-scripts \
+    --mount=type=cache,dst=/var/cache/libdnf5 \
+    --mount=type=cache,dst=/var/cache/rpm-ostree \
     --mount=type=tmpfs,dst=/boot \
     --mount=type=tmpfs,dst=/run \
-    --mount=type=bind,from=ctx,source=/,dst=/tmp/build-scripts \
     /tmp/build-scripts/build.sh
 
 RUN bootc container lint

@@ -2,14 +2,18 @@
 
 set -xeuo pipefail
 
-# Updating makes it so some hook or something runs and the kernel package install actually works
-# And I cannot bother figuring out why
-dnf update -y
+# Installing steam updates something that fixes the kernel
+dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+dnf -y install steam
 
-rm -r -f /usr/lib/modules
+for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
+  rpm --erase $pkg --nodeps
+done
+
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr disable bieszczaders/kernel-cachyos-lto
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto install kernel-cachyos-lto
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto install \
+  kernel-cachyos-lto
 
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y copr disable bieszczaders/kernel-cachyos-addons
@@ -17,6 +21,9 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-a
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
   scx-scheds-git \
   scx-manager
+
+dnf -y remove steam
+rm -rf /etc/yum.repos.d/rpmfusion*
 
 tee /etc/modules-load.d/ntsync.conf <<'EOF'
 ntsync
