@@ -14,7 +14,7 @@ How do I swap from Bazzite stock kernel to CachyOS?
 
 Simple, open up a terminal and type in: 
 
-bootc switch ghcr.io/kitkat6464/aloy:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/kitkat6464/aloy:latest
 
 ... and press enter.
 
@@ -24,7 +24,7 @@ AND REBOOT AND YOUR BAZZITE HAS GONE FULL DEMON MODE WITH CACHYOS KERNEL AND YOU
 
 If you ever want to go back to stock, open up a terminal and type in: 
 
-bootc switch ghcr.io/ublue-os/bazzite:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/bazzite:latest
 
 ... and press enter.
 
