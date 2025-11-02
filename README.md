@@ -1,3 +1,6 @@
+
+<a href="https://github.com/kitkat6464/aloy/actions/workflows/build.yml"><img src="https://github.com/kitkat6464/aloy/actions/workflows/build.yml/badge.svg" alt="Build Status" /></a>
+
 # Project Aloy
 
 ## It's Purpose
