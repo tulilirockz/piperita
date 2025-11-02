@@ -2,9 +2,6 @@
 
 set -xeuo pipefail
 
-# Installing steam updates something that fixes the kernel
-dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-
 # create a shims to bypass kernel install triggering dracut/rpm-ostree
 # seems to be minimal impact, but allows progress on build
 pushd /usr/lib/kernel/install.d
@@ -53,8 +50,3 @@ KERNEL_VERSION="$(find "/usr/lib/modules" -maxdepth 1 -type d ! -path "/usr/lib/
 export DRACUT_NO_XATTR=1
 dracut --no-hostonly --kver "$KERNEL_VERSION" --reproducible --zstd -v --add ostree -f "/usr/lib/modules/$KERNEL_VERSION/initramfs.img"
 chmod 0600 "/usr/lib/modules/${KERNEL_VERSION}/initramfs.img"
-
-pushd /usr/lib/kernel/install.d
-mv -f 05-rpmostree.install.bak 05-rpmostree.install
-mv -f 50-dracut.install.bak 50-dracut.install
-popd
