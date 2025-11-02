@@ -16,7 +16,9 @@ How do I swap from Bazzite stock kernel to CachyOS?
 
 Simple, open up a terminal and type in: 
 
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/kitkat6464/aloy:latest
+Stable: rpm-ostree rebase ostree-image-signed:docker://ghcr.io/kitkat6464/aloy:latest
+Testing: rpm-ostree rebase ostree-image-signed:docker://ghcr.io/kitkat6464/aloy:testing
+
 
 ... and press enter.
 
