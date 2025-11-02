@@ -2,10 +2,14 @@
 
 set -xeuo pipefail
 
-dnf -y copr enable bieszczaders/kernel-cachyos
-dnf -y copr disable bieszczaders/kernel-cachyos
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos install \
-  kernel-cachyos
+for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
+  rpm --erase $pkg --nodeps
+done
+
+dnf -y copr enable bieszczaders/kernel-cachyos-lto
+dnf -y copr disable bieszczaders/kernel-cachyos-lto
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto install \
+  kernel-cachyos-lto
 
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y copr disable bieszczaders/kernel-cachyos-addons
