@@ -3,6 +3,8 @@
 
 # Project Aloy
 
+WARNING: SWITCH OFF SECURE BOOT IN BIOS UNTIL I FIND A SOLUTION
+
 ## It's Purpose
 
 To merge the greatness of Bazzite KDE with CachyOS Kernel.
