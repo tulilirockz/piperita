@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/tulilirockz/piperita/blob/main/assets/piperita.png"/>
+    <img width="200" height="400" src="https://github.com/tulilirockz/piperita/blob/main/assets/piperita.png"/>
     <br/>
     <h1>Piperita</h1>
     <a href="https://github.com/tulilirockz/piperita/actions/workflows/build.yml"><img src="https://github.com/tulilirockz/piperita/actions/workflows/build.yml/badge.svg" alt="Build Status" /></a>
