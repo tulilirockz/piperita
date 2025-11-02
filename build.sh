@@ -20,6 +20,11 @@ tee /etc/modules-load.d/ntsync.conf <<'EOF'
 ntsync
 EOF
 
+pushd /usr/lib/kernel/install.d
+mv -f 05-rpmostree.install.bak 05-rpmostree.install
+mv -f 50-dracut.install.bak 50-dracut.install
+popd
+
 KERNEL_VERSION="$(find "/usr/lib/modules" -maxdepth 1 -type d ! -path "/usr/lib/modules" -exec basename '{}' ';' | sort | tail -n 1)"
 export DRACUT_NO_XATTR=1
 dracut --no-hostonly --kver "$KERNEL_VERSION" --reproducible --zstd -v --add ostree --add fido2 -f "/usr/lib/modules/$KERNEL_VERSION/initramfs.img"
