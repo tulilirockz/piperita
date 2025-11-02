@@ -2,6 +2,11 @@
 
 set -xeuo pipefail
 
+# Installing steam updates something that fixes the kernel
+dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+dnf -y remove steam
+dnf -y install steam
+
 for pkg in kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra; do
   rpm --erase $pkg --nodeps
 done
@@ -17,6 +22,8 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-a
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
   scx-scheds-git \
   scx-manager
+
+rm -rf /etc/yum.repos.d/rpmfusion*
 
 tee /etc/modules-load.d/ntsync.conf <<'EOF'
 ntsync
