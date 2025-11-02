@@ -2,6 +2,10 @@
 
 set -ouex pipefail
 
+for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
+  rpm --erase $pkg --nodeps
+done
+
 pushd /usr/lib/kernel/install.d
 mv 05-rpmostree.install 05-rpmostree.install.bak
 mv 50-dracut.install 50-dracut.install.bak
