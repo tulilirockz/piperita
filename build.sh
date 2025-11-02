@@ -2,10 +2,6 @@
 
 set -xeuo pipefail
 
-for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
-  rpm --erase $pkg --nodeps
-done
-
 dnf -y copr enable bieszczaders/kernel-cachyos
 dnf -y copr disable bieszczaders/kernel-cachyos
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos install \
