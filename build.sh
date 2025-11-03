@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+cp -avf "/ctx/system_files"/. /
+
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
   rpm --erase $pkg --nodeps
 done
