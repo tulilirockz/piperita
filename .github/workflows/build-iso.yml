@@ -52,11 +52,20 @@ jobs:
         with:
           string: ${{ env.IMAGE_REGISTRY }}
 
+      # We need this as we use the desktop image as the runtime for
+      # the livecds.
+      - name: Obtain non-deck image ref
+        id: get-nondeck-ref
+        run: |
+          ref="${{ matrix.image_name }}"
+          ref="${ref/-deck/}"
+          echo "ref=${ref}" >> $GITHUB_OUTPUT
+
       - name: Build ISOs
         uses: ublue-os/titanoboa@main
         id: build
         with:
-          image-ref: ${{ steps.registry_case.outputs.lowercase }}:${{ steps.generate-tag.outputs.tag }}
+          image-ref: ${{ steps.registry_case.outputs.lowercase }}/${{ steps.get-nondeck-ref.outputs.ref }}:${{ steps.generate-tag.outputs.tag }}
           container-image: ${{ steps.registry_case.outputs.lowercase }}/${{ matrix.image_name }}:${{ steps.generate-tag.outputs.tag }}
           iso-dest: ${{ matrix.image_name }}-${{ steps.generate-tag.outputs.tag }}-live.iso
 
