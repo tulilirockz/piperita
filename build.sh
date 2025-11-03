@@ -22,10 +22,6 @@ dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y swap zram-generator-defaults cachyos-settings
 dnf -y install scx-manager
 
-tee /etc/modules-load.d/ntsync.conf <<'EOF'
-ntsync
-EOF
-
 pushd /usr/lib/kernel/install.d
 mv -f 05-rpmostree.install.bak 05-rpmostree.install
 mv -f 50-dracut.install.bak 50-dracut.install
