@@ -2,6 +2,12 @@
 
 set -xeuo pipefail
 
+dnf remove -y NetworkManager
+
+dnf install -y \
+  systemd-networkd \
+  systemd-networkd-defaults
+
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
   rpm --erase $pkg --nodeps
 done
