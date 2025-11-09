@@ -6,7 +6,10 @@ dnf remove -y NetworkManager
 
 dnf install -y \
   systemd-networkd \
-  systemd-networkd-defaults
+  systemd-networkd-defaults \
+  strace \
+  socat \
+  tcpdump
 
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
   rpm --erase $pkg --nodeps
