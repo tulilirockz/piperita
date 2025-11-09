@@ -9,7 +9,8 @@ dnf install -y \
   systemd-networkd-defaults \
   strace \
   socat \
-  tcpdump
+  tcpdump \
+  netcat
 
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
   rpm --erase $pkg --nodeps
