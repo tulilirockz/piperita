@@ -34,6 +34,10 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-a
   scx-scheds-git \
   scx-manager
 
+# http://github.com/tulilirockz/maranta/
+dnf install -y \
+  SDL3_image
+
 tee /usr/lib/modules-load.d/piperita-ntsync.conf <<'EOF'
 ntsync
 EOF
